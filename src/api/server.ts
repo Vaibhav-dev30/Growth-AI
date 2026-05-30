@@ -13,9 +13,9 @@ app.use(cors());
 app.use(express.json({ limit: '10mb' }));
 
 // ── STATIC FILE SERVING ────────────────────────────────────────────────────────
-// Serve the entire project root as static files (index.html, resume.html, app.js, style.css, data.js)
+// Serve the public directory as static files (index.html, resume.html, app.js, style.css, data.js)
 const PROJECT_ROOT = path.resolve(__dirname, '../../');
-app.use(express.static(PROJECT_ROOT, { index: 'index.html' }));
+app.use(express.static(path.join(PROJECT_ROOT, 'public'), { index: 'index.html' }));
 
 // ── PROFILE API ────────────────────────────────────────────────────────────────
 app.get('/api/profile', async (req: Request, res: Response) => {
