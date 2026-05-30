@@ -1,0 +1,32 @@
+{
+  "name": "fervent-carson",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "ts-node src/app.ts",
+    "build": "prisma generate && tsc && tsc-alias",
+    "dev": "ts-node src/app.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.9.1",
+    "prisma": "^5.22.0",
+    "ts-node": "^10.9.2",
+    "tsc-alias": "^1.8.17",
+    "typescript": "^6.0.3"
+  },
+  "dependencies": {
+    "@google/genai": "^1.46.0",
+    "@prisma/client": "^5.22.0",
+    "cors": "^2.8.6",
+    "docx": "^9.7.1",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "playwright": "^1.60.0"
+  }
+}

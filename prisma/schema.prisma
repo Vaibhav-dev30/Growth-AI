@@ -1,0 +1,80 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id           String   @id @default(uuid())
+  name         String
+  email        String   @unique
+  linkedinUrl  String?
+  githubUrl    String?
+  portfolioUrl String?
+  skills       String   // Comma-separated string
+  education    String?  // JSON string
+  experience   String?  // JSON string
+  projects     String?  // JSON string
+  rawProfile   String?  // JSON string
+  updatedAt    DateTime @updatedAt
+  createdAt    DateTime @default(now())
+}
+
+model Job {
+  id              String   @id @default(uuid())
+  title           String
+  company         String
+  location        String?
+  url             String   @unique
+  source          String   // e.g., 'linkedin', 'wellfound'
+  description     String
+  isRemote        Boolean  @default(false)
+  isInternship    Boolean  @default(false)
+  isFresher       Boolean  @default(false)
+  salary          String?
+  matchScore      Int?
+  matchReasoning  String?
+  status          String   @default("NEW") // NEW, MATCHED, REJECTED, READY_TO_APPLY
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  applications    Application[]
+}
+
+model Application {
+  id              String   @id @default(uuid())
+  jobId           String
+  job             Job      @relation(fields: [jobId], references: [id])
+  status          String   @default("PENDING") // PENDING, APPLIED, INTERVIEW, OFFER, REJECTED
+  resumePath      String?  
+  coverLetterPath String?  
+  appliedAt       DateTime?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  outreaches      Outreach[]
+}
+
+model Outreach {
+  id            String      @id @default(uuid())
+  applicationId String
+  application   Application @relation(fields: [applicationId], references: [id])
+  recipientName String?
+  recipientEmail String
+  subject       String
+  body          String
+  status        String      @default("DRAFT") // DRAFT, SENT, OPENED, REPLIED
+  sentAt        DateTime?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+}
+
+model Log {
+  id        String   @id @default(uuid())
+  level     String   // INFO, WARN, ERROR
+  source    String   // SCRAPER, MATCHER, AUTO_APPLY, EMAIL
+  message   String
+  details   String?  // JSON string
+  createdAt DateTime @default(now())
+}

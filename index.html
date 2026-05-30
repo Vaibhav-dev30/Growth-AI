@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vaibhav Kumar | AI Career & LinkedIn Agent</title>
+  <meta name="description" content="AI Career & LinkedIn Growth Agent for Vaibhav Kumar — Full-Stack Developer, 2nd Year CSE @ IPEC, Open to Remote Internships">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+<div class="app">
+
+  <!-- ═══ SIDEBAR ═══ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="s-brand">
+      <div class="s-brand-icon">🤖</div>
+      <div><span class="s-brand-name">CareerAI</span><span class="s-brand-sub">Growth Agent</span></div>
+    </div>
+    <div class="s-profile">
+      <div class="s-avatar">VK</div>
+      <div>
+        <div class="s-name">Vaibhav Kumar</div>
+        <div class="s-role">2nd Yr CSE • IPEC Delhi</div>
+        <div class="s-otw">🟢 Open to Work</div>
+      </div>
+    </div>
+    <nav class="s-nav">
+      <div class="nav-label">Main</div>
+      <a class="nav-item active" data-section="dashboard" onclick="showSection('dashboard')"><span class="nav-icon">⚡</span><span class="nav-text">Dashboard</span></a>
+      <a class="nav-item" data-section="linkedin" onclick="showSection('linkedin')"><span class="nav-icon">💼</span><span class="nav-text">LinkedIn Optimizer</span><span class="nav-badge hot">HOT</span></a>
+      <a class="nav-item" data-section="github" onclick="showSection('github')"><span class="nav-icon">🐙</span><span class="nav-text">GitHub Analyzer</span></a>
+      <a class="nav-item" onclick="window.open('resume.html', '_blank')"><span class="nav-icon">📄</span><span class="nav-text">ATS Resume Builder</span><span class="nav-badge hot">NEW</span></a>
+      <div class="nav-label">Jobs</div>
+      <a class="nav-item" data-section="jobs" onclick="showSection('jobs')"><span class="nav-icon">🎯</span><span class="nav-text">Job Hunter</span></a>
+      <a class="nav-item" data-section="tracker" onclick="showSection('tracker')"><span class="nav-icon">📊</span><span class="nav-text">Job Tracker</span><span class="nav-badge" id="tracker-count">8</span></a>
+      <div class="nav-label">Growth</div>
+      <a class="nav-item" data-section="growth" onclick="showSection('growth')"><span class="nav-icon">📣</span><span class="nav-text">Growth Engine</span></a>
+      <a class="nav-item" data-section="recruiter" onclick="showSection('recruiter')"><span class="nav-icon">🧲</span><span class="nav-text">Recruiter Magnet</span></a>
+      <a class="nav-item" data-section="strategy" onclick="showSection('strategy')"><span class="nav-icon">🗺️</span><span class="nav-text">Strategy Hub</span></a>
+    </nav>
+    <div class="s-footer">
+      <div class="s-footer-stats">
+        <div class="s-fstat"><span id="sidebar-apps">8</span><small>Tracked</small></div>
+        <div class="s-fstat"><span id="sidebar-score">62</span><small>Profile Score</small></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ═══ MAIN ═══ -->
+  <main class="main">
+    <header class="header">
+      <div class="h-left">
+        <button class="hamburger" id="hamburger" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+        <div class="breadcrumb" id="breadcrumb">⚡ Dashboard</div>
+      </div>
+      <div class="h-right">
+        <div class="h-time" id="current-time"></div>
+        <a href="https://github.com/Vaibhav-dev30" target="_blank" class="h-btn"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://linkedin.com" target="_blank" class="h-btn li"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      </div>
+    </header>
+
+    <div class="content">
+
+      <!-- ═══ DASHBOARD ═══ -->
+      <section id="dashboard" class="section active">
+        <div class="sec-hdr">
+          <h1 class="sec-title">👋 Welcome back, <span class="gtext">Vaibhav!</span></h1>
+          <p class="sec-sub">Your AI Career Agent is working to land you a remote internship. Here's your live overview.</p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon" style="background:var(--vg)">💼</div>
+            <div><div class="stat-num" id="stat-jobs">8</div><div class="stat-lbl">Jobs Tracked</div><div class="stat-chg up">+3 this week</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:var(--cg)">📈</div>
+            <div><div class="stat-num" style="color:var(--c)" id="stat-score">62</div><div class="stat-lbl">Profile Score</div><div class="stat-chg neutral">Target: 90+</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:var(--gg)">✅</div>
+            <div><div class="stat-num" style="color:var(--g)" id="stat-applied">0</div><div class="stat-lbl">Applied</div><div class="stat-chg neutral">Track all apps →</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:var(--ag)">🔥</div>
+            <div><div class="stat-num" style="color:var(--a)">92%</div><div class="stat-lbl">Best Match</div><div class="stat-chg up">Frontend Intern</div></div>
+          </div>
+        </div>
+
+        <div class="sec-label">Quick Actions</div>
+        <div class="qa-grid">
+          <button class="qa-btn qa-v" onclick="showSection('linkedin')"><span class="qa-icon">💼</span><span class="qa-txt">Optimize LinkedIn</span><span class="qa-arr">→</span></button>
+          <button class="qa-btn qa-c" onclick="showSection('tracker')"><span class="qa-icon">📊</span><span class="qa-txt">Add Job to Tracker</span><span class="qa-arr">→</span></button>
+          <button class="qa-btn qa-g" onclick="showSection('growth')"><span class="qa-icon">📣</span><span class="qa-txt">Generate Post</span><span class="qa-arr">→</span></button>
+          <button class="qa-btn qa-a" onclick="showSection('jobs')"><span class="qa-icon">🎯</span><span class="qa-txt">Find Internships</span><span class="qa-arr">→</span></button>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <div class="card-hdr"><h3>LinkedIn Profile Score</h3><span class="badge by">Needs Work</span></div>
+            <div class="score-wrap">
+              <div class="score-circ">
+                <svg class="score-svg" viewBox="0 0 100 100">
+                  <circle class="sc-bg" cx="50" cy="50" r="40"/>
+                  <circle class="sc-fill" cx="50" cy="50" r="40" stroke-dasharray="251.2" stroke-dashoffset="95.5"/>
+                </svg>
+                <div class="score-txt"><div class="score-n">62</div><div class="score-sl">/ 100</div></div>
+              </div>
+              <div class="score-bk">
+                <div class="sc-item"><span>Headline</span><div class="sc-bar"><div class="sc-fill2" style="width:45%"></div></div><span class="sc-pct">45%</span></div>
+                <div class="sc-item"><span>About</span><div class="sc-bar"><div class="sc-fill2" style="width:30%"></div></div><span class="sc-pct">30%</span></div>
+                <div class="sc-item"><span>Skills</span><div class="sc-bar"><div class="sc-fill2" style="width:60%"></div></div><span class="sc-pct">60%</span></div>
+                <div class="sc-item"><span>Projects</span><div class="sc-bar"><div class="sc-fill2" style="width:50%"></div></div><span class="sc-pct">50%</span></div>
+                <div class="sc-item"><span>Photo/Banner</span><div class="sc-bar"><div class="sc-fill2" style="width:20%"></div></div><span class="sc-pct">20%</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-hdr"><h3>🎯 Today's Priority Actions</h3><span class="badge br">Urgent</span></div>
+            <div class="action-list" id="today-actions"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-hdr"><h3>🔥 Top Opportunities for You</h3><button class="btn btn-sm" onclick="showSection('jobs')">View All →</button></div>
+          <div class="jobs-mini" id="top-jobs"></div>
+        </div>
+      </section>
+
+      <!-- ═══ LINKEDIN OPTIMIZER ═══ -->
+      <section id="linkedin" class="section">
+        <div class="sec-hdr">
+          <h1 class="sec-title">💼 LinkedIn <span class="gtext">Profile Optimizer</span></h1>
+          <p class="sec-sub">Transform your LinkedIn into a recruiter magnet. Every section optimized for ATS, SEO & human eyes.</p>
+        </div>
+
+        <div class="scores-row">
+          <div class="mscore"><div class="mscore-n" style="color:var(--a)">62</div><div class="mscore-l">Profile Score</div></div>
+          <div class="mscore"><div class="mscore-n" style="color:var(--r)">58</div><div class="mscore-l">ATS Score</div></div>
+          <div class="mscore"><div class="mscore-n" style="color:var(--a)">55</div><div class="mscore-l">SEO Score</div></div>
+          <div class="mscore"><div class="mscore-n" style="color:var(--vl)">0</div><div class="mscore-l">Recommendations</div></div>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <div class="card-hdr"><h3>✏️ Headline Optimizer</h3><span class="badge br">Priority #1</span></div>
+            <div class="compare-box cb-bad">
+              <div class="cb-lbl">❌ Current Headline — Score: 20/100</div>
+              <div class="cb-text">Engineering Student | CSE | Inderprastha Engineering College</div>
+              <div class="cb-score">Missing: keywords, role intent, tech stack, call-to-action</div>
+            </div>
+            <div class="hl-opts" id="headline-options"></div>
+          </div>
+          <div class="card">
+            <div class="card-hdr"><h3>✅ Profile Completion Checklist</h3><span class="badge by" id="cl-progress">0/12 Done</span></div>
+            <div class="checklist" id="profile-cl"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-hdr">
+            <h3>📝 Optimized About Section</h3>
+            <div style="display:flex;gap:8px"><span class="badge bg">ATS Optimized</span><button class="btn btn-sm" onclick="copyAbout()">📋 Copy</button></div>
+          </div>
+          <div class="about-prev" id="about-prev"></div>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <div class="card-hdr"><h3>🔑 Power Keywords (Click to Copy)</h3></div>
+            <div class="kw-cloud" id="kw-cloud"></div>
+          </div>
+          <div class="card">
+            <div class="card-hdr"><h3>⬆️ Skills to Add (Priority Order)</h3></div>
+            <div class="sk-list" id="skills-cloud"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-hdr"><h3>🎨 Banner, Photo & Settings Guide</h3></div>
+          <div class="tips-grid">
+            <div class="tip-card"><div class="tip-icon">📸</div><div class="tip-title">Profile Photo</div><ul class="tip-list"><li>Professional headshot, face clearly visible</li><li>Light or neutral background</li><li>Formal or smart casual attire</li><li>Smile — approachable wins</li><li>Use remove.bg to clean background</li></ul></div>
+            <div class="tip-card"><div class="tip-icon">🎨</div><div class="tip-title">LinkedIn Banner</div><ul class="tip-list"><li>Size: 1584 × 396 px</li><li>Include name, role, tech stack icons</li><li>Use Canva → LinkedIn Banner templates</li><li>Add GitHub URL + "Open to Internships"</li><li>Dark/gradient tech theme looks great</li></ul></div>
+            <div class="tip-card"><div class="tip-icon">⚙️</div><div class="tip-title">Profile Settings</div><ul class="tip-list"><li>Custom URL: linkedin.com/in/vaibhav-kumar-dev</li><li>Enable "Open to Work" (all intern roles)</li><li>Turn on Creator Mode for better reach</li><li>Set location: Delhi + Remote preference</li><li>Verify skills with LinkedIn Assessments</li></ul></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ GITHUB ANALYZER ═══ -->
+      <section id="github" class="section">
+        <div class="sec-hdr">
+          <h1 class="sec-title">🐙 GitHub <span class="gtext">Analyzer</span></h1>
+          <p class="sec-sub">Analyzing github.com/Vaibhav-dev30 — ranking your projects and optimizing for recruiter eyes.</p>
+        </div>
+
+        <div class="gh-bar">
+          <div class="gh-av">VK</div>
+          <div><div class="gh-name">Vaibhav-dev30</div><a href="https://github.com/Vaibhav-dev30" target="_blank" class="gh-link">github.com/Vaibhav-dev30 ↗</a></div>
+          <div class="gh-stats">
+            <div class="gh-stat"><span id="repo-count">...</span><small>Repos</small></div>
+            <div class="gh-stat"><span id="star-count">...</span><small>Stars</small></div>
+            <div class="gh-stat"><span id="follower-count">...</span><small>Followers</small></div>
+          </div>
+          <button class="btn btn-c" onclick="fetchGitHub()">🔄 Refresh</button>
+        </div>
+
+        <div class="card-hdr" style="margin-bottom:12px"><h3>📦 Your Repositories (Ranked by Strength)</h3><span class="badge bc" id="repo-status">Loading...</span></div>
+        <div class="repos-grid" id="repos-grid"><div class="loading-state"><div class="spinner"></div><p>Fetching your repositories...</p></div></div>
+
+        <div class="card" style="margin-top:18px">
+          <div class="card-hdr"><h3>💡 Projects You Should Build (Impact Ranked)</h3><span class="badge br">Missing from Portfolio</span></div>
+          <div class="sug-grid" id="sug-grid"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-hdr"><h3>📄 README & Profile Best Practices</h3></div>
+          <div class="tips-grid">
+            <div class="tip-card"><div class="tip-icon">✅</div><div class="tip-title">README Must-Haves</div><ul class="tip-list"><li>Project title + one-line description</li><li>Live demo link (Vercel/Netlify)</li><li>Screenshot or GIF of the project</li><li>Tech stack badges (shields.io)</li><li>Clear installation steps</li></ul></div>
+            <div class="tip-card"><div class="tip-icon">⬆️</div><div class="tip-title">README Level Up</div><ul class="tip-list"><li>Features list with emojis</li><li>API documentation (if applicable)</li><li>Contributing guidelines</li><li>License badge</li><li>Demo video/GIF (use Loom or Gyazo)</li></ul></div>
+            <div class="tip-card"><div class="tip-icon">🎨</div><div class="tip-title">Profile README</div><ul class="tip-list"><li>Animated header (capsule-render)</li><li>GitHub Stats card (github-readme-stats)</li><li>Top Languages card</li><li>Contribution streak widget</li><li>Skill badges (shields.io)</li></ul></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ JOB HUNTER ═══ -->
+      <section id="jobs" class="section">
+        <div class="sec-hdr">
+          <h1 class="sec-title">🎯 Job <span class="gtext">Hunter</span></h1>
+          <p class="sec-sub">8 job boards searched for remote internships matching your Node.js, JavaScript & Python skills.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-hdr"><h3>🌐 Job Board Quick Links</h3></div>
+          <div class="boards-grid" id="boards-grid"></div>
+        </div>
+
+        <div class="filter-bar">
+          <div class="filter-grp"><label>Role</label>
+            <select id="f-role" onchange="filterJobs()"><option value="">All Roles</option><option value="frontend">Frontend</option><option value="backend">Backend</option><option value="full stack">Full Stack</option></select>
+          </div>
+          <div class="filter-grp"><label>Match</label>
+            <select id="f-match" onchange="filterJobs()"><option value="">All</option><option value="high">High (80%+)</option><option value="medium">Medium (60-79%)</option></select>
+          </div>
+          <div class="filter-grp"><label>Sort</label>
+            <select id="f-sort" onchange="filterJobs()"><option value="match">Match %</option><option value="company">Company</option></select>
+          </div>
+          <div style="margin-left:auto;display:flex;gap:8px">
+            <span class="badge bg">High Match</span>
+            <span class="badge by">Medium</span>
+            <span class="badge br">Lower</span>
+          </div>
+        </div>
+
+        <div class="jobs-grid" id="jobs-grid"></div>
+      </section>
+
+      <!-- ═══ JOB TRACKER ═══ -->
+      <section id="tracker" class="section">
+        <div class="sec-hdr">
+          <h1 class="sec-title">📊 Job <span class="gtext">Tracker</span></h1>
+          <p class="sec-sub">Track every application, follow-up and interview. Export to Excel or CSV anytime.</p>
+        </div>
+
+        <div class="tr-actions">
+          <button class="btn btn-v" onclick="openModal()">+ Add Job</button>
+          <button class="btn btn-g" onclick="exportXLSX()">📥 Export Excel</button>
+          <button class="btn btn-c" onclick="exportCSV()">📄 Export CSV</button>
+          <div class="tr-legend">
+            <span><span class="dot g"></span>High Match (80%+)</span>
+            <span><span class="dot y"></span>Medium (60-79%)</span>
+            <span><span class="dot r"></span>Lower (&lt;60%)</span>
+          </div>
+        </div>
+
+        <div class="tr-summary" id="tracker-summary"></div>
+
+        <div class="tbl-wrap">
+          <table class="tbl" id="tracker-table">
+            <thead><tr><th>#</th><th>Company</th><th>Role</th><th>Type</th><th>Location</th><th>Salary</th><th>Skills</th><th>Match</th><th>Status</th><th>Posted</th><th>Notes</th><th>Actions</th></tr></thead>
+            <tbody id="tracker-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ═══ GROWTH ENGINE ═══ -->
+      <section id="growth" class="section">
+        <div class="sec-hdr">
+          <h1 class="sec-title">📣 LinkedIn Growth <span class="gtext">Engine</span></h1>
+          <p class="sec-sub">Generate viral posts, find best posting times, and build your personal brand on LinkedIn.</p>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <div class="card-hdr"><h3>✍️ Post Generator</h3></div>
+            <div class="tabs" id="pt-tabs">
+              <button class="tab active" onclick="selectPostType('tech',this)">💡 Tech</button>
+              <button class="tab" onclick="selectPostType('project',this)">🚀 Project</button>
+              <button class="tab" onclick="selectPostType('internship',this)">📢 Internship</button>
+              <button class="tab" onclick="selectPostType('ai_trend',this)">🤖 AI Trend</button>
+              <button class="tab" onclick="selectPostType('personal',this)">🌱 Personal</button>
+            </div>
+            <div class="post-prev" id="post-prev"></div>
+            <div class="post-acts">
+              <button class="btn btn-v" onclick="generatePost()">🎲 Generate New</button>
+              <button class="btn btn-sm" onclick="copyPost()">📋 Copy</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-hdr"><h3>⏰ Best Posting Times (IST)</h3></div>
+            <div class="pt-list" id="pt-list"></div>
+            <div class="card-hdr" style="margin-top:20px"><h3>🔥 Trending Hashtags</h3></div>
+            <div class="ht-cloud" id="ht-cloud"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-hdr"><h3>💬 Message Templates</h3><span class="badge bc">Copy & Customize</span></div>
+          <div class="tabs tmpl-tabs">
+            <button class="tab active" onclick="showTemplate('connection',this)">Connection Request</button>
+            <button class="tab" onclick="showTemplate('recruiterDM',this)">Recruiter DM</button>
+            <button class="tab" onclick="showTemplate('referral',this)">Referral Request</button>
+          </div>
+          <div class="tmpl-prev" id="tmpl-prev"></div>
+          <button class="btn btn-sm" onclick="copyTemplate()" style="margin-top:10px">📋 Copy Template</button>
+        </div>
+
+        <div class="card">
+          <div class="card-hdr"><h3>📅 Weekly Content Calendar</h3><span class="badge bg">3 Posts/Week Recommended</span></div>
+          <div class="cal-grid">
+            <div class="cal-day cal-on"><div class="cal-dn">Mon</div><div class="cal-cnt">Tech tip or learning post</div><div class="cal-em">💡</div></div>
+            <div class="cal-day"><div class="cal-dn">Tue</div><div class="cal-cnt">Engage, don't post</div><div class="cal-em">💬</div></div>
+            <div class="cal-day cal-on"><div class="cal-dn">Wed</div><div class="cal-cnt">Project showcase</div><div class="cal-em">🚀</div></div>
+            <div class="cal-day"><div class="cal-dn">Thu</div><div class="cal-cnt">Engage, don't post</div><div class="cal-em">💬</div></div>
+            <div class="cal-day cal-on"><div class="cal-dn">Fri</div><div class="cal-cnt">Internship hunt / brand</div><div class="cal-em">📢</div></div>
+            <div class="cal-day"><div class="cal-dn">Sat</div><div class="cal-cnt">Avoid posting</div><div class="cal-em">❌</div></div>
+            <div class="cal-day"><div class="cal-dn">Sun</div><div class="cal-cnt">Avoid posting</div><div class="cal-em">❌</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ RECRUITER MAGNET ═══ -->
+      <section id="recruiter" class="section">
+        <div class="sec-hdr">
+          <h1 class="sec-title">🧲 Recruiter <span class="gtext">Magnet System</span></h1>
+          <p class="sec-sub">Optimize your profile to appear in recruiter searches and attract inbound opportunities.</p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-icon" style="background:var(--vg)">👁️</div><div><div class="stat-num" style="color:var(--vl)">35%</div><div class="stat-lbl">Recruiter Visibility</div><div class="stat-chg down">Needs optimization</div></div></div>
+          <div class="stat-card"><div class="stat-icon" style="background:var(--cg)">🔍</div><div><div class="stat-num" style="color:var(--c)">3/15</div><div class="stat-lbl">Keywords Hit</div><div class="stat-chg down">Add more keywords</div></div></div>
+          <div class="stat-card"><div class="stat-icon" style="background:var(--gg)">🏆</div><div><div class="stat-num" style="color:var(--g)">0</div><div class="stat-lbl">Certifications</div><div class="stat-chg neutral">Add 2+ certs</div></div></div>
+          <div class="stat-card"><div class="stat-icon" style="background:var(--ag)">📊</div><div><div class="stat-num" style="color:var(--a)">LOW</div><div class="stat-lbl">Engagement Level</div><div class="stat-chg neutral">Post consistently</div></div></div>
+        </div>
+
+        <div class="alert-card alert-danger">
+          <div class="alert-icon">⚠️</div>
+          <div><div class="alert-title">Critical Profile Gaps — Fix These First!</div><div class="alert-txt">No profile photo • No LinkedIn banner • No certifications • Skills section likely under 10 • About section missing or generic. These are the top reasons recruiters skip your profile.</div></div>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <div class="card-hdr"><h3>🔑 Recruiter Search Keywords</h3><span class="badge by">Add to Headline + About</span></div>
+            <div class="kw-cloud" id="rec-keywords"></div>
+          </div>
+          <div class="card">
+            <div class="card-hdr"><h3>🏆 Recommended Certifications</h3><span class="badge bv">Boost Credibility</span></div>
+            <div class="cert-list" id="cert-list"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-hdr"><h3>📈 2025 Hiring Trends for Freshers & Interns</h3></div>
+          <div class="trends-grid">
+            <div class="trend-card hot"><div class="trend-rank">#1 Trending</div><div class="trend-skill">AI/ML Integration</div><div class="trend-desc">Companies want devs who can integrate AI APIs (OpenAI, Gemini) into web apps. Python + JS combo is perfect.</div><div class="trend-tag">🔥 HOTTEST TREND</div></div>
+            <div class="trend-card"><div class="trend-rank">#2 In Demand</div><div class="trend-skill">Full-Stack (React + Node)</div><div class="trend-desc">MERN stack dominates intern listings — 60%+ of postings require it. React is the missing piece for you.</div><div class="trend-tag">⭐ HIGH DEMAND</div></div>
+            <div class="trend-card"><div class="trend-rank">#3 Rising</div><div class="trend-skill">TypeScript</div><div class="trend-desc">Now expected in most roles. Increasingly seen in intern postings. Learn it after React.</div><div class="trend-tag">⭐ RISING FAST</div></div>
+            <div class="trend-card"><div class="trend-rank">#4 Important</div><div class="trend-skill">Cloud Deployment</div><div class="trend-desc">Basic Vercel/Netlify/AWS knowledge separates you from other freshers. Every project should have a live demo.</div><div class="trend-tag">🟡 IMPORTANT</div></div>
+            <div class="trend-card"><div class="trend-rank">#5 Differentiator</div><div class="trend-skill">Open Source Contributions</div><div class="trend-desc">Even 1-2 PRs to popular repos signals you're a real developer. Look for "good first issue" labels.</div><div class="trend-tag">🟡 DIFFERENTIATOR</div></div>
+            <div class="trend-card"><div class="trend-rank">#6 Your Strength</div><div class="trend-skill">Python + Automation</div><div class="trend-desc">Python dominates backend, scripting, and AI workflows. You already have this — highlight it more!</div><div class="trend-tag">✅ YOUR STRENGTH</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══ STRATEGY ═══ -->
+      <section id="strategy" class="section">
+        <div class="sec-hdr">
+          <h1 class="sec-title">🗺️ Personalized <span class="gtext">Strategy Hub</span></h1>
+          <p class="sec-sub">Your custom 30-day & 90-day roadmaps to land a remote internship. Track every day.</p>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <div class="card-hdr"><h3>✅ This Week's Checklist</h3><span class="badge bv" id="weekly-prog">0/10 Done</span></div>
+            <div class="checklist" id="weekly-cl"></div>
+          </div>
+          <div class="card">
+            <div class="card-hdr"><h3>📄 Resume Quick Wins</h3></div>
+            <div class="rtip-list">
+              <div class="rtip"><div class="rtip-n">1</div><div class="rtip-c"><strong>One-page rule</strong> — 2nd year student = 1 page. No exceptions.</div></div>
+              <div class="rtip"><div class="rtip-n">2</div><div class="rtip-c"><strong>Quantify everything</strong> — "Built X that improved Y by Z%" beats "Built a website".</div></div>
+              <div class="rtip"><div class="rtip-n">3</div><div class="rtip-c"><strong>ATS formatting</strong> — Simple, clean fonts. No tables, columns, or images. Use .docx.</div></div>
+              <div class="rtip"><div class="rtip-n">4</div><div class="rtip-c"><strong>Projects section first</strong> — Before experience (if you have none). Show what you build.</div></div>
+              <div class="rtip"><div class="rtip-n">5</div><div class="rtip-c"><strong>GitHub + Portfolio links</strong> — Include both prominently at the very top.</div></div>
+              <div class="rtip"><div class="rtip-n">6</div><div class="rtip-c"><strong>Tailor for each role</strong> — Swap skills and keywords to match each job description.</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-hdr"><h3>📅 30-Day LinkedIn Growth Roadmap</h3><span class="badge bg" id="roadmap-prog">0/30 Days Done</span></div>
+          <div class="roadmap-con" id="roadmap-con"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-hdr"><h3>🚀 90-Day Career Acceleration Plan</h3></div>
+          <div class="plan-grid">
+            <div class="plan-month">
+              <div class="plan-mhdr"><div class="plan-mn">Month 1</div><div class="plan-mt">Foundation</div></div>
+              <ul class="plan-list">
+                <li>Complete LinkedIn profile optimization (all sections done)</li>
+                <li>Build & deploy Portfolio Website on Vercel</li>
+                <li>Write a killer GitHub profile README</li>
+                <li>Apply to 30+ internships across all boards</li>
+                <li>Start posting 3× per week on LinkedIn</li>
+                <li>Get 1 certification (freeCodeCamp JS or CS50)</li>
+                <li>Grow LinkedIn to 200+ connections</li>
+              </ul>
+            </div>
+            <div class="plan-month">
+              <div class="plan-mhdr"><div class="plan-mn">Month 2</div><div class="plan-mt">Build & Apply</div></div>
+              <ul class="plan-list">
+                <li>Build AI Chatbot project (Python + OpenAI API)</li>
+                <li>Build Real-time Chat App (Node.js + Socket.io)</li>
+                <li>Apply to 50+ more internships</li>
+                <li>Start appearing in recruiter searches</li>
+                <li>Get 2nd certification (React or Node.js)</li>
+                <li>Grow to 500+ LinkedIn connections</li>
+                <li>Collect 2+ LinkedIn recommendations</li>
+              </ul>
+            </div>
+            <div class="plan-month">
+              <div class="plan-mhdr"><div class="plan-mn">Month 3</div><div class="plan-mt">Land the Offer 🎯</div></div>
+              <ul class="plan-list">
+                <li>Direct outreach to target companies</li>
+                <li>Refine resume based on any feedback</li>
+                <li>Practice coding interviews (LeetCode Easy/Med)</li>
+                <li>Attend 2+ virtual hackathons or tech events</li>
+                <li>Make 1+ open source contributions</li>
+                <li>Build 5+ warm referral contacts</li>
+                <li>🎯 GOAL: Land your first remote internship!</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- end content -->
+  </main>
+</div>
+
+<!-- ═══ ADD JOB MODAL ═══ -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="modal-hdr"><h3>➕ Add Job to Tracker</h3><button class="modal-close" onclick="closeModal()">✕</button></div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-grp"><label>Company Name *</label><input id="jc" type="text" placeholder="e.g. Google"></div>
+        <div class="form-grp"><label>Job Role *</label><input id="jr" type="text" placeholder="e.g. Frontend Intern"></div>
+        <div class="form-grp"><label>Job Type</label>
+          <select id="jt"><option>Remote Internship</option><option>Hybrid Internship</option><option>On-site Internship</option><option>Freelance</option></select>
+        </div>
+        <div class="form-grp"><label>Location</label><input id="jl" type="text" value="Remote"></div>
+        <div class="form-grp"><label>Salary / Stipend</label><input id="js" type="text" placeholder="₹10,000/mo"></div>
+        <div class="form-grp"><label>Match % (estimate)</label><input id="jm" type="number" min="0" max="100" placeholder="75"></div>
+        <div class="form-grp" style="grid-column:1/-1"><label>Required Skills (comma separated)</label><input id="jsk" type="text" placeholder="Node.js, React, MongoDB"></div>
+        <div class="form-grp" style="grid-column:1/-1"><label>Application Link</label><input id="jlnk" type="url" placeholder="https://..."></div>
+        <div class="form-grp"><label>Recruiter Name</label><input id="jrec" type="text" placeholder="Optional"></div>
+        <div class="form-grp"><label>Follow-up Date</label><input id="jfu" type="date"></div>
+        <div class="form-grp" style="grid-column:1/-1"><label>Notes</label><textarea id="jn" placeholder="Any notes about this role..."></textarea></div>
+      </div>
+    </div>
+    <div class="modal-ftr">
+      <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-v" onclick="saveJob()">Save to Tracker</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
