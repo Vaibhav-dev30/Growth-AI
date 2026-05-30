@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "ts-node src/app.ts",
-    "build": "prisma generate && tsc && tsc-alias",
-    "dev": "ts-node src/app.ts"
+    "build": "node scripts/prepare-prisma.js && prisma generate && tsc && tsc-alias",
+    "dev": "node scripts/prepare-prisma.js && prisma generate && ts-node src/app.ts"
   },
   "keywords": [],
   "author": "",
