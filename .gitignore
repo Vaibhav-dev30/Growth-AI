@@ -13,3 +13,4 @@ prisma/dev.db-journal
 generated-resumes/
 /generated/prisma
 
+.vercel
