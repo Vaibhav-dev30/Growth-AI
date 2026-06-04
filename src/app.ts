@@ -6,6 +6,7 @@ import { LinkedInScraper } from './services/scraper/linkedin';
 import { InternshalaScraper } from './services/scraper/internshala';
 import { AIService } from './services/ai/gemini';
 import { prisma } from './db/client';
+import { exportToCSV } from './utils/csvExporter';
 
 config();
 
@@ -50,6 +51,9 @@ async function bootstrap() {
     });
     
     logger.info(`Evaluated job ${job.title} at ${job.company}: Score ${matchResult.score} -> ${status}`);
+    
+    // Export database to CSV in real-time
+    await exportToCSV();
   });
 
   // Define Scraper Worker
@@ -86,6 +90,9 @@ async function bootstrap() {
 
   // Run once on startup
   runDailyScrape();
+
+  // Initial CSV generation from existing DB data
+  await exportToCSV();
 
   // Then run every 24 hours
   setInterval(runDailyScrape, 24 * 60 * 60 * 1000);
